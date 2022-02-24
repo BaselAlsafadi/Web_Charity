@@ -1,8 +1,8 @@
-// ignore_for_file: file_names, prefer_const_constructors
+// ignore_for_file: file_names, prefer_const_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../constants.dart';
+import '../Constants/constants.dart';
 
 class HeaderSearch extends StatefulWidget {
   String title;
@@ -15,58 +15,77 @@ class HeaderSearch extends StatefulWidget {
 class _HeaderSearchState extends State<HeaderSearch> {
   @override
   Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-      Container(
+    return Padding(
+      padding: const EdgeInsets.only(bottom: defaultPadding),
+      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        Container(
+            alignment: Alignment.center,
+            width: 250,
+            height: 50,
+            decoration: BoxDecoration(
+                color: secondaryColor,
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            child: Text(
+              widget.title,
+              style: TextStyle(color: Colors.amber[400]),
+            )),
+        Container(
           alignment: Alignment.center,
-          width: 250,
           decoration: BoxDecoration(
               color: secondaryColor,
               borderRadius: BorderRadius.all(Radius.circular(10))),
-          padding: const EdgeInsets.all(defaultPadding),
-          child: Text(widget.title)),
-      Container(
-        alignment: Alignment.center,
-        width: 500,
-        padding: const EdgeInsets.all(defaultPadding),
-        child: TextField(
-          decoration: InputDecoration(
-              fillColor: secondaryColor,
-              filled: true,
-              border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
-              suffixIcon: InkWell(
+          width: 500,
+          height: 50,
+          child: Row(
+            children: [
+              InkWell(
                 child: Container(
                   padding: EdgeInsets.all(defaultPadding * 0.75),
                   margin: EdgeInsets.symmetric(horizontal: defaultPadding / 2),
                   decoration: BoxDecoration(
-                      color: primaryColor,
+                      color: Colors.amber,
                       borderRadius: BorderRadius.all(Radius.circular(10))),
                   child: SvgPicture.asset('assets/icons/Search.svg'),
                 ),
-              )),
-        ),
-      ),
-      Container(
-          alignment: Alignment.center,
-          width: 250,
-          decoration: BoxDecoration(
-              color: secondaryColor,
-              borderRadius: BorderRadius.all(Radius.circular(10))),
-          padding: EdgeInsets.all(defaultPadding * 0.5),
-          child: Row(
-            // ignore: prefer_const_literals_to_create_immutables
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Text('Basel Alsafadi'),
-              Container(
-                width: 35,
-                height: 35,
-                decoration:
-                    BoxDecoration(color: Colors.amber, shape: BoxShape.circle),
+              ),
+              Expanded(
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Search',
+                    border: InputBorder.none,
+                  ),
+                ),
               ),
             ],
-          )),
-    ]);
+          ),
+        ),
+        Container(
+            alignment: Alignment.center,
+            width: 250,
+            height: 50,
+            decoration: BoxDecoration(
+                color: secondaryColor,
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 8.0, right: 8),
+              child: Row(
+                children: [
+                  Container(
+                    width: 35,
+                    height: 35,
+                    decoration: BoxDecoration(
+                        color: Colors.amber, shape: BoxShape.circle),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    'Basel Alsafadi',
+                  ),
+                ],
+              ),
+            )),
+      ]),
+    );
   }
 }

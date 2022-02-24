@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import '../constants.dart';
+import '../Constants/constants.dart';
 
 class Scandpage extends StatelessWidget {
   const Scandpage({Key? key}) : super(key: key);

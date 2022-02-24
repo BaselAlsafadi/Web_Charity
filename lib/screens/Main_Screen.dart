@@ -1,10 +1,10 @@
 // ignore_for_file: file_names, prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:web_charity/screens/secandpage.dart';
 import 'package:web_charity/widget/Drawer_ListTile.dart';
 import 'package:web_charity/widget/Header_Search.dart';
-import '../constants.dart';
+import 'package:web_charity/widget/RightSideBar/Right_SideBar.dart';
+import '../Constants/constants.dart';
 import 'HomePage.dart';
 
 class MainScreen extends StatefulWidget {
@@ -17,8 +17,6 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int tabIndex = 0;
   String title = 'Home Page';
-  DateTime dateToday =
-      DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
 
   @override
   Widget build(BuildContext context) {
@@ -42,13 +40,12 @@ class _MainScreenState extends State<MainScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                            height: 70,
-                            width: 70,
+                            height: 85,
+                            width: 85,
                             decoration: const BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20))),
-                            child:
-                                Image.asset('assets/images/charitylogo.png')),
+                            child: Image.asset('assets/images/LOGO.png')),
                         SizedBox(
                           height: 15,
                         ),
@@ -131,30 +128,31 @@ class _MainScreenState extends State<MainScreen> {
         ),
         Expanded(
             flex: 5,
-            child: Column(
-              children: [
-                HeaderSearch(title: title.toString()),
-                Flexible(
-                  child: Container(
-                    child: tabIndex == 0
-                        ? HomePage()
-                        : tabIndex == 1
-                            ? Scandpage()
-                            : HomePage(),
-                  ),
-                )
-              ],
+            child: Padding(
+              padding: const EdgeInsets.only(
+                top: defaultPadding,
+                bottom: defaultPadding,
+              ),
+              child: Column(
+                children: [
+                  HeaderSearch(title: title.toString()),
+                  Flexible(
+                    child: Container(
+                      height: 1000,
+                      child: tabIndex == 0
+                          ? HomePage()
+                          : tabIndex == 1
+                              ? Scandpage()
+                              : HomePage(),
+                    ),
+                  )
+                ],
+              ),
             )),
         Expanded(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.all(defaultPadding),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: secondaryColor,
-                    borderRadius: BorderRadius.circular(10)),
-              ),
-            ))
+          flex: 1,
+          child: Right_SideBar(),
+        )
       ]),
     ));
   }
