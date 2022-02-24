@@ -1,8 +1,10 @@
-// ignore_for_file: file_names, camel_case_types
+// ignore_for_file: file_names, prefer_const_constructors
 import 'package:flutter/material.dart';
 import '../../Constants/constants.dart';
+import 'Beneficiaries.dart';
 import 'DateTime_Widget.dart';
 import 'Financial_Values.dart';
+import 'Fund_balance.dart';
 
 class Right_SideBar extends StatelessWidget {
   const Right_SideBar({
@@ -12,13 +14,21 @@ class Right_SideBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.all(defaultPadding),
+        padding: EdgeInsets.all(defaultPadding),
         child: Column(children: [
           DateTimeWidget(),
           SizedBox(
             height: 16,
           ),
-          Financial_Values()
+          Fund_Balance(),
+          SizedBox(
+            height: 16,
+          ),
+          Financial_Values(),
+          SizedBox(
+            height: 16,
+          ),
+          Beneficiaries()
         ]));
   }
 }

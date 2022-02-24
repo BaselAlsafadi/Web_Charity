@@ -97,7 +97,7 @@ class _MainScreenState extends State<MainScreen> {
                     image: 'assets/images/revenue.png',
                   ),
                   DrawerListTile(
-                    title: 'My Team',
+                    title: 'Donors',
                     press: () {
                       setState(() {
                         tabIndex = 4;
@@ -107,10 +107,30 @@ class _MainScreenState extends State<MainScreen> {
                     image: 'assets/images/group.png',
                   ),
                   DrawerListTile(
-                    title: 'Settings',
+                    title: 'Beneficiaries',
                     press: () {
                       setState(() {
                         tabIndex = 5;
+                        title = 'My Team Page';
+                      });
+                    },
+                    image: 'assets/images/group.png',
+                  ),
+                  DrawerListTile(
+                    title: 'My Team',
+                    press: () {
+                      setState(() {
+                        tabIndex = 6;
+                        title = 'My Team Page';
+                      });
+                    },
+                    image: 'assets/images/group.png',
+                  ),
+                  DrawerListTile(
+                    title: 'Settings',
+                    press: () {
+                      setState(() {
+                        tabIndex = 7;
                         title = 'Settings Page';
                       });
                     },
