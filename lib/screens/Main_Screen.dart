@@ -5,7 +5,9 @@ import 'package:web_charity/widget/Drawer_ListTile.dart';
 import 'package:web_charity/widget/Header_Search.dart';
 import 'package:web_charity/widget/RightSideBar/Right_SideBar.dart';
 import '../Constants/constants.dart';
+import 'Donors.dart';
 import 'HomePage.dart';
+import 'MyTeam.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -67,16 +69,6 @@ class _MainScreenState extends State<MainScreen> {
                     image: 'assets/images/home.png',
                   ),
                   DrawerListTile(
-                    title: 'Analysis',
-                    press: () {
-                      setState(() {
-                        tabIndex = 1;
-                        title = 'Analysis Page';
-                      });
-                    },
-                    image: 'assets/images/pie-chart.png',
-                  ),
-                  DrawerListTile(
                     title: 'Expenses',
                     press: () {
                       setState(() {
@@ -101,7 +93,7 @@ class _MainScreenState extends State<MainScreen> {
                     press: () {
                       setState(() {
                         tabIndex = 4;
-                        title = 'My Team Page';
+                        title = 'Donors Page';
                       });
                     },
                     image: 'assets/images/group.png',
@@ -115,6 +107,16 @@ class _MainScreenState extends State<MainScreen> {
                       });
                     },
                     image: 'assets/images/group.png',
+                  ),
+                  DrawerListTile(
+                    title: 'Analysis',
+                    press: () {
+                      setState(() {
+                        tabIndex = 1;
+                        title = 'Analysis Page';
+                      });
+                    },
+                    image: 'assets/images/pie-chart.png',
                   ),
                   DrawerListTile(
                     title: 'My Team',
@@ -163,7 +165,11 @@ class _MainScreenState extends State<MainScreen> {
                           ? HomePage()
                           : tabIndex == 1
                               ? Scandpage()
-                              : HomePage(),
+                              : tabIndex == 4
+                                  ? DonorsScreen()
+                                  : tabIndex == 6
+                                      ? MyTeam()
+                                      : HomePage(),
                     ),
                   )
                 ],
