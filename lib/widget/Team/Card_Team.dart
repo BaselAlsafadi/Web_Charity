@@ -3,17 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:web_charity/Constants/constants.dart';
 
-class UserCard extends StatelessWidget {
+class CardTeam extends StatelessWidget {
   final Function() edit;
-  final Function() ontap;
-  final String name;
-  final String number;
-  const UserCard({
+  final Function() delete;
+  const CardTeam({
     Key? key,
-    required this.ontap,
+    required this.delete,
     required this.edit,
-    required this.name,
-    required this.number,
   }) : super(key: key);
 
   @override
@@ -30,40 +26,28 @@ class UserCard extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(name),
-            Text(number),
-            Row(
-              children: [
-                InkWell(
-                  onTap: edit,
-                  child: Icon(
-                    Icons.edit,
-                    size: 20,
-                    color: Colors.white54,
-                  ),
-                ),
-                SizedBox(
-                  width: 8,
-                ),
-                Icon(
-                  Icons.delete,
-                  size: 20,
-                  color: Colors.amber[400]!,
-                )
-              ],
-            )
+            Text('Walid Hnidi'),
+            Text('0930253884'),
+            InkWell(
+              onTap: delete,
+              child: Icon(
+                Icons.delete,
+                size: 20,
+                color: Colors.white54,
+              ),
+            ),
           ],
         ),
-        subtitle: const Text('Syria'),
+        subtitle: const Text('Admin'),
         trailing: InkWell(
-          onTap: ontap,
+          onTap: edit,
           child: Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-                color: Color(0xff5BB949),
+                color: Colors.amber[400],
                 borderRadius: BorderRadius.circular(5)),
             child: const Text(
-              'Receive',
+              '  edit  ',
             ),
           ),
         ),

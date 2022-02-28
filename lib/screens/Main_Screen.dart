@@ -96,14 +96,14 @@ class _MainScreenState extends State<MainScreen> {
                         title = 'Donors Page';
                       });
                     },
-                    image: 'assets/images/group.png',
+                    image: 'assets/images/donors.png',
                   ),
                   DrawerListTile(
                     title: 'Beneficiaries',
                     press: () {
                       setState(() {
                         tabIndex = 5;
-                        title = 'My Team Page';
+                        title = 'Beneficiaries page';
                       });
                     },
                     image: 'assets/images/group.png',
@@ -126,7 +126,7 @@ class _MainScreenState extends State<MainScreen> {
                         title = 'My Team Page';
                       });
                     },
-                    image: 'assets/images/group.png',
+                    image: 'assets/images/team.png',
                   ),
                   DrawerListTile(
                     title: 'Settings',

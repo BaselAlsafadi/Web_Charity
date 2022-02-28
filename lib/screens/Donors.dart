@@ -58,6 +58,8 @@ class _DonorsScreenState extends State<DonorsScreen> {
                             child: Column(
                               children: [
                                 UserCard(
+                                  name: 'Basel Alsafadi',
+                                  number: '00963930253884',
                                   ontap: () {
                                     setState(() {
                                       recive = true;
