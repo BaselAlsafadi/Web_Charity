@@ -1,5 +1,6 @@
 // ignore_for_file: file_names, prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:web_charity/screens/analysis.dart';
 import 'package:web_charity/screens/secandpage.dart';
 import 'package:web_charity/widget/Drawer_ListTile.dart';
 import 'package:web_charity/widget/Header_Search.dart';
@@ -112,7 +113,7 @@ class _MainScreenState extends State<MainScreen> {
                     title: 'Analysis',
                     press: () {
                       setState(() {
-                        tabIndex = 1;
+                        tabIndex = 8;
                         title = 'Analysis Page';
                       });
                     },
@@ -169,7 +170,9 @@ class _MainScreenState extends State<MainScreen> {
                                   ? DonorsScreen()
                                   : tabIndex == 6
                                       ? MyTeam()
-                                      : HomePage(),
+                                      : tabIndex == 8
+                                          ? Analysis()
+                                          : HomePage(),
                     ),
                   )
                 ],
