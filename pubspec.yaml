@@ -16,6 +16,7 @@ dependencies:
   intl: ^0.17.0
   syncfusion_flutter_datepicker: ^19.4.53
   syncfusion_flutter_charts : ^19.4.53
+  http: ^0.13.1
 
 dev_dependencies:
   flutter_test:

@@ -1,19 +1,33 @@
 // ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 import 'package:web_charity/Constants/constants.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:web_charity/Services/Users.dart';
+
 import 'package:web_charity/widget/Team/Add_Team.dart';
 import 'package:web_charity/widget/Team/Card_Team.dart';
 
 class MyTeam extends StatefulWidget {
-  const MyTeam({Key? key}) : super(key: key);
+  const MyTeam({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _MyTeamState createState() => _MyTeamState();
 }
 
 class _MyTeamState extends State<MyTeam> {
+  TextEditingController nationalId = TextEditingController();
+  TextEditingController name = TextEditingController();
+  TextEditingController phone = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  TextEditingController isadmin = TextEditingController();
+  TextEditingController location = TextEditingController();
   int edit = 0;
+  int id = 0;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,31 +58,74 @@ class _MyTeamState extends State<MyTeam> {
                           decoration: BoxDecoration(
                               color: bgColor,
                               borderRadius: BorderRadius.circular(10)),
-                          child: SingleChildScrollView(
-                              child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              children: [
-                                CardTeam(
-                                  delete: () {
-                                    setState(() {
-                                      // recive = true;
-                                    });
-                                  },
-                                  edit: () {
-                                    setState(() {
-                                      edit = 1;
-                                    });
-                                  },
-                                ),
-                              ],
+                          child: Flexible(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ListView.builder(
+                                itemCount: allUsers.length,
+                                itemBuilder: (context, itemcount) {
+                                  return CardTeam(
+                                    name: allUsers[itemcount]["name"],
+                                    phone: allUsers[itemcount]["phone"],
+                                    delete: () {
+                                      setState(() {
+                                        deleteUser(allUsers[itemcount]["id"]);
+                                      });
+                                    },
+                                    edit: () {
+                                      setState(() {
+                                        edit = 1;
+                                        id = allUsers[itemcount]["id"];
+                                        nationalId.text =
+                                            allUsers[itemcount]["nationalId"];
+                                        name.text = allUsers[itemcount]["name"];
+                                        phone.text =
+                                            allUsers[itemcount]["phone"];
+                                        isadmin.text = allUsers[itemcount]
+                                                ["isAdmin"]
+                                            .toString();
+
+                                        email.text = allUsers[itemcount]
+                                                ["email"]
+                                            .toString();
+                                        password.text = allUsers[itemcount]
+                                                ["photo"]
+                                            .toString();
+
+                                        location.text = allUsers[itemcount]
+                                                ["address"]
+                                            .toString();
+                                      });
+                                    },
+                                  );
+                                },
+                              ),
                             ),
-                          )))),
+                          ))),
                   Expanded(
                       flex: 1,
                       child: Column(
                         children: [
                           Add_Team(
+                            nationalId: nationalId,
+                            name: name,
+                            phone: phone,
+                            isadmin: isadmin,
+                            email: email,
+                            password: password,
+                            location: location,
+                            add: () {
+                              setState(() {
+                                addUser(
+                                    name.text,
+                                    phone.text,
+                                    email.text,
+                                    password.text,
+                                    nationalId.text,
+                                    location.text,
+                                    isadmin.text);
+                              });
+                            },
                             canceledit: () {
                               setState(() {
                                 edit = 0;
@@ -77,6 +134,15 @@ class _MyTeamState extends State<MyTeam> {
                             editname: () {
                               setState(() {
                                 edit = 0;
+                                updateUser(
+                                    id,
+                                    name.text,
+                                    phone.text,
+                                    email.text,
+                                    password.text,
+                                    nationalId.text,
+                                    location.text,
+                                    isadmin.text);
                               });
                             },
                             edit: edit,

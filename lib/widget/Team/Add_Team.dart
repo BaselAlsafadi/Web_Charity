@@ -5,14 +5,30 @@ import 'package:web_charity/Constants/constants.dart';
 
 // ignore: camel_case_types
 class Add_Team extends StatelessWidget {
+  final TextEditingController nationalId;
+  final TextEditingController name;
+  final TextEditingController phone;
+  final TextEditingController email;
+  final TextEditingController password;
+  final TextEditingController isadmin;
+  final TextEditingController location;
   final int edit;
   final Function() canceledit;
+  final Function() add;
   final Function() editname;
   const Add_Team(
       {Key? key,
       required this.edit,
       required this.canceledit,
-      required this.editname})
+      required this.editname,
+      required this.add,
+      required this.nationalId,
+      required this.name,
+      required this.phone,
+      required this.email,
+      required this.password,
+      required this.isadmin,
+      required this.location})
       : super(
           key: key,
         );
@@ -31,28 +47,45 @@ class Add_Team extends StatelessWidget {
             decoration: BoxDecoration(
                 color: secondaryColor, borderRadius: BorderRadius.circular(7)),
             child: Column(children: [
-              const TextField(
-                decoration: InputDecoration(
+              TextField(
+                controller: nationalId,
+                decoration: const InputDecoration(
+                  hintText: 'nationalId',
+                ),
+              ),
+              TextField(
+                controller: name,
+                decoration: const InputDecoration(
                   hintText: 'name',
                 ),
               ),
-              const TextField(
-                decoration: InputDecoration(
-                  hintText: 'number',
+              TextField(
+                controller: phone,
+                decoration: const InputDecoration(
+                  hintText: 'phone',
                 ),
               ),
-              const TextField(
-                decoration: InputDecoration(
-                  hintText: 'position',
+              TextField(
+                controller: isadmin,
+                decoration: const InputDecoration(
+                  hintText: 'is admin',
                 ),
               ),
-              const TextField(
-                decoration: InputDecoration(
+              TextField(
+                controller: email,
+                decoration: const InputDecoration(
                   hintText: 'email',
                 ),
               ),
-              const TextField(
-                decoration: InputDecoration(
+              TextField(
+                controller: password,
+                decoration: const InputDecoration(
+                  hintText: 'password',
+                ),
+              ),
+              TextField(
+                controller: location,
+                decoration: const InputDecoration(
                   hintText: 'location',
                 ),
               ),
@@ -60,15 +93,18 @@ class Add_Team extends StatelessWidget {
                 height: 16,
               ),
               edit == 0
-                  ? Container(
-                      alignment: Alignment.center,
-                      height: 30,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.amber[400],
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: const Text('Add Person'))
+                  ? InkWell(
+                      onTap: add,
+                      child: Container(
+                          alignment: Alignment.center,
+                          height: 30,
+                          width: 100,
+                          decoration: BoxDecoration(
+                            color: Colors.amber[400],
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: const Text('Add Person')),
+                    )
                   : Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [

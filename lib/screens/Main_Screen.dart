@@ -1,13 +1,16 @@
 // ignore_for_file: file_names, prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:web_charity/Services/Users.dart';
 import 'package:web_charity/screens/analysis.dart';
 import 'package:web_charity/screens/secandpage.dart';
+import 'package:web_charity/screens/test.dart';
 import 'package:web_charity/widget/Drawer_ListTile.dart';
 import 'package:web_charity/widget/Header_Search.dart';
 import 'package:web_charity/widget/RightSideBar/Right_SideBar.dart';
 import '../Constants/constants.dart';
 import 'Donors.dart';
 import 'HomePage.dart';
+import 'MyTeam.dart';
 import 'MyTeam.dart';
 
 class MainScreen extends StatefulWidget {
@@ -125,6 +128,7 @@ class _MainScreenState extends State<MainScreen> {
                       setState(() {
                         tabIndex = 6;
                         title = 'My Team Page';
+                        getAllUsers();
                       });
                     },
                     image: 'assets/images/team.png',
@@ -141,7 +145,11 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   DrawerListTile(
                     title: 'Log Out',
-                    press: () {},
+                    press: () {
+                      setState(() {
+                        tabIndex = 50;
+                      });
+                    },
                     image: 'assets/images/logout.png',
                   ),
                 ]),
