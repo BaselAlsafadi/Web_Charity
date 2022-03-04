@@ -54,54 +54,62 @@ class _MyTeamState extends State<MyTeam> {
                   Expanded(
                       flex: 2,
                       child: Container(
-                          height: 575,
-                          decoration: BoxDecoration(
-                              color: bgColor,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Flexible(
-                            child: Padding(
+                        height: 575,
+                        decoration: BoxDecoration(
+                            color: bgColor,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Flexible(
+                          child: Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: ListView.builder(
-                                itemCount: allUsers.length,
-                                itemBuilder: (context, itemcount) {
-                                  return CardTeam(
-                                    name: allUsers[itemcount]["name"],
-                                    phone: allUsers[itemcount]["phone"],
-                                    delete: () {
-                                      setState(() {
-                                        deleteUser(allUsers[itemcount]["id"]);
-                                      });
-                                    },
-                                    edit: () {
-                                      setState(() {
-                                        edit = 1;
-                                        id = allUsers[itemcount]["id"];
-                                        nationalId.text =
-                                            allUsers[itemcount]["nationalId"];
-                                        name.text = allUsers[itemcount]["name"];
-                                        phone.text =
-                                            allUsers[itemcount]["phone"];
-                                        isadmin.text = allUsers[itemcount]
-                                                ["isAdmin"]
-                                            .toString();
+                              child: FutureBuilder(
+                                  future: getAllUsers(),
+                                  builder: (context, snapshot) {
+                                    return ListView.builder(
+                                      itemCount: allUsers.length,
+                                      itemBuilder: (context, itemcount) {
+                                        return CardTeam(
+                                          name: allUsers[itemcount]["name"],
+                                          phone: allUsers[itemcount]["phone"],
+                                          delete: () {
+                                            setState(() {
+                                              deleteUser(
+                                                  allUsers[itemcount]["id"]);
+                                            });
+                                            getAllUsers();
+                                          },
+                                          edit: () {
+                                            setState(() {
+                                              edit = 1;
+                                              id = allUsers[itemcount]["id"];
+                                              nationalId.text =
+                                                  allUsers[itemcount]
+                                                      ["nationalId"];
+                                              name.text =
+                                                  allUsers[itemcount]["name"];
+                                              phone.text =
+                                                  allUsers[itemcount]["phone"];
+                                              isadmin.text = allUsers[itemcount]
+                                                      ["isAdmin"]
+                                                  .toString();
 
-                                        email.text = allUsers[itemcount]
-                                                ["email"]
-                                            .toString();
-                                        password.text = allUsers[itemcount]
-                                                ["photo"]
-                                            .toString();
+                                              email.text = allUsers[itemcount]
+                                                      ["email"]
+                                                  .toString();
+                                              password.text =
+                                                  allUsers[itemcount]["photo"]
+                                                      .toString();
 
-                                        location.text = allUsers[itemcount]
-                                                ["address"]
-                                            .toString();
-                                      });
-                                    },
-                                  );
-                                },
-                              ),
-                            ),
-                          ))),
+                                              location.text =
+                                                  allUsers[itemcount]["address"]
+                                                      .toString();
+                                            });
+                                          },
+                                        );
+                                      },
+                                    );
+                                  })),
+                        ),
+                      )),
                   Expanded(
                       flex: 1,
                       child: Column(
@@ -124,6 +132,14 @@ class _MyTeamState extends State<MyTeam> {
                                     nationalId.text,
                                     location.text,
                                     isadmin.text);
+                                getAllUsers();
+                                nationalId.clear();
+                                name.clear();
+                                phone.clear();
+                                password.clear();
+                                location.clear();
+                                isadmin.clear();
+                                email.clear();
                               });
                             },
                             canceledit: () {
@@ -144,6 +160,14 @@ class _MyTeamState extends State<MyTeam> {
                                     location.text,
                                     isadmin.text);
                               });
+                              getAllUsers();
+                              nationalId.clear();
+                              name.clear();
+                              phone.clear();
+                              password.clear();
+                              location.clear();
+                              isadmin.clear();
+                              email.clear();
                             },
                             edit: edit,
                           ),
