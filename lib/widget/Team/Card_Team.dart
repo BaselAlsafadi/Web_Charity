@@ -8,12 +8,14 @@ class CardTeam extends StatelessWidget {
   final Function() delete;
   final String name;
   final String phone;
+  final String idlist;
   const CardTeam({
     Key? key,
     required this.delete,
     required this.edit,
     required this.name,
     required this.phone,
+    required this.idlist,
   }) : super(key: key);
 
   @override
@@ -27,7 +29,7 @@ class CardTeam extends StatelessWidget {
         child: ListTile(
           leading: CircleAvatar(
             backgroundColor: Colors.amber[400],
-            child: const Text('1'),
+            child: Text(idlist),
           ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

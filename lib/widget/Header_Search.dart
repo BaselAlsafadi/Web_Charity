@@ -73,6 +73,7 @@ class _HeaderSearchState extends State<HeaderSearch> {
                   Container(
                     width: 35,
                     height: 35,
+                    child: Icon(Icons.person),
                     decoration: BoxDecoration(
                         color: Colors.amber, shape: BoxShape.circle),
                   ),

@@ -50,43 +50,43 @@ class Add_Team extends StatelessWidget {
               TextField(
                 controller: nationalId,
                 decoration: const InputDecoration(
-                  hintText: 'nationalId',
+                  labelText: 'nationalId',
                 ),
               ),
               TextField(
                 controller: name,
                 decoration: const InputDecoration(
-                  hintText: 'name',
+                  labelText: 'name',
                 ),
               ),
               TextField(
                 controller: phone,
                 decoration: const InputDecoration(
-                  hintText: 'phone',
+                  labelText: 'phone',
                 ),
               ),
               TextField(
                 controller: isadmin,
                 decoration: const InputDecoration(
-                  hintText: 'is admin',
+                  labelText: 'is admin',
                 ),
               ),
               TextField(
                 controller: email,
                 decoration: const InputDecoration(
-                  hintText: 'email',
+                  labelText: 'email',
                 ),
               ),
               TextField(
                 controller: password,
                 decoration: const InputDecoration(
-                  hintText: 'password',
+                  labelText: 'password',
                 ),
               ),
               TextField(
                 controller: location,
                 decoration: const InputDecoration(
-                  hintText: 'location',
+                  labelText: 'location',
                 ),
               ),
               const SizedBox(

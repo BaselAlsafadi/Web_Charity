@@ -41,7 +41,19 @@ class _MyTeamState extends State<MyTeam> {
           child: Column(
             children: [
               Row(
-                children: const [Text('All Team'), Spacer(), Text("total 5")],
+                children: [
+                  Text('All Team'),
+                  Spacer(),
+                  Row(
+                    children: [
+                      Text('Total'),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text(allUsers.length.toString()),
+                    ],
+                  )
+                ],
               ),
               const Padding(
                 padding: EdgeInsets.only(top: 8, bottom: 8),
@@ -68,6 +80,7 @@ class _MyTeamState extends State<MyTeam> {
                                       itemCount: allUsers.length,
                                       itemBuilder: (context, itemcount) {
                                         return CardTeam(
+                                          idlist: '${itemcount + 1}',
                                           name: allUsers[itemcount]["name"],
                                           phone: allUsers[itemcount]["phone"],
                                           delete: () {
@@ -145,6 +158,13 @@ class _MyTeamState extends State<MyTeam> {
                             canceledit: () {
                               setState(() {
                                 edit = 0;
+                                nationalId.clear();
+                                name.clear();
+                                phone.clear();
+                                password.clear();
+                                location.clear();
+                                isadmin.clear();
+                                email.clear();
                               });
                             },
                             editname: () {

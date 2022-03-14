@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:web_charity/Services/Users.dart';
 import 'package:web_charity/screens/analysis.dart';
+import 'package:web_charity/screens/log_in.dart';
 import 'package:web_charity/screens/secandpage.dart';
 import 'package:web_charity/screens/test.dart';
 import 'package:web_charity/widget/Drawer_ListTile.dart';
@@ -149,6 +150,12 @@ class _MainScreenState extends State<MainScreen> {
                       setState(() {
                         tabIndex = 50;
                       });
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute<void>(
+                          builder: (BuildContext context) =>
+                              const LogInScreen(),
+                        ),
+                      );
                     },
                     image: 'assets/images/logout.png',
                   ),
