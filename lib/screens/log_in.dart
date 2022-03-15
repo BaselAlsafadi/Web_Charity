@@ -121,19 +121,22 @@ class _LogInScreenState extends State<LogInScreen> {
                           });
                         }
                         getAllUsers();
-                        for (int i = 0; i < 10; i++) {
-                          allUsers[i]["email"] == email.text ||
-                                  allUsers[i]["password"] == password.text
-                              ? Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute<void>(
-                                    builder: (BuildContext context) =>
-                                        MainScreen(
-                                      name: allUsers[i]["name"],
+
+                        setState(() {
+                          for (int i = 0; i < 10; i++) {
+                            allUsers[i]["email"] == email.text ||
+                                    allUsers[i]["password"] == password.text
+                                ? Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute<void>(
+                                      builder: (BuildContext context) =>
+                                          MainScreen(
+                                        name: allUsers[i]["name"],
+                                      ),
                                     ),
-                                  ),
-                                )
-                              : print(email.text);
-                        }
+                                  )
+                                : print(email.text);
+                          }
+                        });
                       },
                       child: Container(
                           alignment: Alignment.center,
@@ -152,7 +155,15 @@ class _LogInScreenState extends State<LogInScreen> {
                 ),
               ),
             ),
-            forget == 0 ? ForgetPassword() : Text(''),
+            forget == 0
+                ? ForgetPassword(
+                    Cancel: () {
+                      setState(() {
+                        forget = 1;
+                      });
+                    },
+                  )
+                : Text(''),
           ],
         ),
       ),
