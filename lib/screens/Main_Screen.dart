@@ -4,7 +4,6 @@ import 'package:web_charity/Services/Users.dart';
 import 'package:web_charity/screens/analysis.dart';
 import 'package:web_charity/screens/log_in.dart';
 import 'package:web_charity/screens/secandpage.dart';
-import 'package:web_charity/screens/test.dart';
 import 'package:web_charity/widget/Drawer_ListTile.dart';
 import 'package:web_charity/widget/Header_Search.dart';
 import 'package:web_charity/widget/RightSideBar/Right_SideBar.dart';
@@ -12,10 +11,11 @@ import '../Constants/constants.dart';
 import 'Donors.dart';
 import 'HomePage.dart';
 import 'MyTeam.dart';
-import 'MyTeam.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+  final String name;
+
+  MainScreen({Key? key, required this.name}) : super(key: key);
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -173,7 +173,10 @@ class _MainScreenState extends State<MainScreen> {
               ),
               child: Column(
                 children: [
-                  HeaderSearch(title: title.toString()),
+                  HeaderSearch(
+                    title: title.toString(),
+                    name: widget.name,
+                  ),
                   Flexible(
                     child: Container(
                       height: 1000,

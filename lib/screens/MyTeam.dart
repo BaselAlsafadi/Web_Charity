@@ -27,6 +27,8 @@ class _MyTeamState extends State<MyTeam> {
   TextEditingController location = TextEditingController();
   int edit = 0;
   int id = 0;
+  List AuthUsers = [];
+  List AuthPassword = [];
 
   @override
   Widget build(BuildContext context) {
@@ -145,6 +147,10 @@ class _MyTeamState extends State<MyTeam> {
                                     nationalId.text,
                                     location.text,
                                     isadmin.text);
+                                AuthUsers.add(email.text.toString());
+                                AuthPassword.add(password.text.toString());
+                                print(AuthPassword);
+                                print(AuthUsers);
                                 getAllUsers();
                                 nationalId.clear();
                                 name.clear();

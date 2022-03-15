@@ -6,7 +6,9 @@ import '../Constants/constants.dart';
 
 class HeaderSearch extends StatefulWidget {
   String title;
-  HeaderSearch({Key? key, required this.title}) : super(key: key);
+  String name;
+  HeaderSearch({Key? key, required this.title, required this.name})
+      : super(key: key);
 
   @override
   _HeaderSearchState createState() => _HeaderSearchState();
@@ -80,9 +82,7 @@ class _HeaderSearchState extends State<HeaderSearch> {
                   SizedBox(
                     width: 10,
                   ),
-                  Text(
-                    'Basel Alsafadi',
-                  ),
+                  Text(widget.name),
                 ],
               ),
             )),
