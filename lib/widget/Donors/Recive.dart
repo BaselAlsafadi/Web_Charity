@@ -8,11 +8,19 @@ import 'package:web_charity/Constants/constants.dart';
 class Recive extends StatelessWidget {
   final Function() cancel;
   final Function() recive;
+  final Color color;
+  final String chek;
+  final TextEditingController amount;
+  final TextEditingController name;
 
-  const Recive({
+  Recive({
     Key? key,
     required this.cancel,
     required this.recive,
+    required this.color,
+    required this.chek,
+    required this.amount,
+    required this.name,
   }) : super(key: key);
 
   @override
@@ -39,15 +47,15 @@ class Recive extends StatelessWidget {
                   Text(date),
                 ],
               ),
-              const TextField(
-                decoration: InputDecoration(
-                  hintText: 'name',
-                  // border: InputBorder.none,
-                ),
+              TextField(
+                controller: name,
+                readOnly: true,
+                decoration: InputDecoration(labelText: 'name'),
               ),
-              const TextField(
+              TextField(
+                controller: amount,
                 decoration: InputDecoration(
-                  hintText: 'amount',
+                  labelText: 'amount',
                 ),
               ),
               const SizedBox(
@@ -76,10 +84,10 @@ class Recive extends StatelessWidget {
                       height: 30,
                       width: 70,
                       decoration: BoxDecoration(
-                        color: Color(0xff5BB949),
+                        color: color,
                         borderRadius: BorderRadius.circular(5),
                       ),
-                      child: Text('recive'),
+                      child: Text(chek),
                     ),
                   )
                 ],

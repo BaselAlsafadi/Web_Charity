@@ -84,6 +84,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               InkWell(
                   onTap: () {
                     setState(() {
+                      getAllUsers();
                       show = 1;
                       for (int i = 0; i < allUsers.length; i++) {
                         allUsers[i]["nationalId"] == passController.text

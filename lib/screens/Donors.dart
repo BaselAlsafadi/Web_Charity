@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:web_charity/Constants/constants.dart';
-import 'package:web_charity/widget/Card_User.dart';
 import 'package:web_charity/widget/Donors/Add_Donor.dart';
 import 'package:web_charity/widget/Donors/Recive.dart';
 
@@ -15,6 +14,12 @@ class DonorsScreen extends StatefulWidget {
 }
 
 class _DonorsScreenState extends State<DonorsScreen> {
+  TextEditingController nationalId = TextEditingController();
+  TextEditingController name = TextEditingController();
+  TextEditingController phone = TextEditingController();
+  TextEditingController location = TextEditingController();
+  TextEditingController amount = TextEditingController();
+
   bool recive = false;
   int edit = 0;
   @override
@@ -57,20 +62,20 @@ class _DonorsScreenState extends State<DonorsScreen> {
                             padding: EdgeInsets.all(8.0),
                             child: Column(
                               children: [
-                                UserCard(
-                                  name: 'Basel Alsafadi',
-                                  number: '00963930253884',
-                                  ontap: () {
-                                    setState(() {
-                                      recive = true;
-                                    });
-                                  },
-                                  edit: () {
-                                    setState(() {
-                                      edit = 1;
-                                    });
-                                  },
-                                ),
+                                // UserCard(
+                                //   name: 'Basel Alsafadi',
+                                //   number: '00963930253884',
+                                //   ontap: () {
+                                //     setState(() {
+                                //       recive = true;
+                                //     });
+                                //   },
+                                //   edit: () {
+                                //     setState(() {
+                                //       edit = 1;
+                                //     });
+                                //   },
+                                // ),
                               ],
                             ),
                           )))),
@@ -82,6 +87,10 @@ class _DonorsScreenState extends State<DonorsScreen> {
                               ? Column(
                                   children: [
                                     Recive(
+                                      name: name,
+                                      amount: amount,
+                                      chek: 'recive',
+                                      color: greeen,
                                       cancel: () {
                                         setState(() {
                                           recive = false;
@@ -97,6 +106,11 @@ class _DonorsScreenState extends State<DonorsScreen> {
                                       height: 16,
                                     ),
                                     Add_Donor(
+                                      add: () {},
+                                      name: name,
+                                      nationalId: nationalId,
+                                      phone: phone,
+                                      location: location,
                                       canceledit: () {
                                         setState(() {
                                           edit = 0;
@@ -112,6 +126,11 @@ class _DonorsScreenState extends State<DonorsScreen> {
                                   ],
                                 )
                               : Add_Donor(
+                                  add: () {},
+                                  name: name,
+                                  nationalId: nationalId,
+                                  phone: phone,
+                                  location: location,
                                   canceledit: () {
                                     setState(() {
                                       edit = 0;
