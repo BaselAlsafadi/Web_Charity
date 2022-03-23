@@ -12,6 +12,7 @@ class Recive extends StatelessWidget {
   final String chek;
   final TextEditingController amount;
   final TextEditingController name;
+  final TextEditingController transactionNumber;
 
   Recive({
     Key? key,
@@ -21,6 +22,7 @@ class Recive extends StatelessWidget {
     required this.chek,
     required this.amount,
     required this.name,
+    required this.transactionNumber,
   }) : super(key: key);
 
   @override
@@ -48,13 +50,19 @@ class Recive extends StatelessWidget {
                 ],
               ),
               TextField(
+                controller: transactionNumber,
+                decoration: const InputDecoration(
+                  labelText: 'transaction number',
+                ),
+              ),
+              TextField(
                 controller: name,
                 readOnly: true,
-                decoration: InputDecoration(labelText: 'name'),
+                decoration: const InputDecoration(labelText: 'name'),
               ),
               TextField(
                 controller: amount,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'amount',
                 ),
               ),
@@ -74,7 +82,7 @@ class Recive extends StatelessWidget {
                         color: Colors.amber[400],
                         borderRadius: BorderRadius.circular(5),
                       ),
-                      child: Text('cancel'),
+                      child: const Text('cancel'),
                     ),
                   ),
                   InkWell(

@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:intl/intl.dart';
 import 'package:web_charity/Constants/constants.dart';
 import 'package:web_charity/Services/Beneficiary.dart';
+import 'package:web_charity/Services/Exchang_TransAction.dart';
 import 'package:web_charity/widget/Card_User.dart';
 import 'package:web_charity/widget/Donors/Add_Donor.dart';
 import 'package:web_charity/widget/Donors/Recive.dart';
@@ -22,12 +24,18 @@ class _BeneficiaryScreenState extends State<BeneficiaryScreen> {
   TextEditingController phone = TextEditingController();
   TextEditingController location = TextEditingController();
   TextEditingController amount = TextEditingController();
+  TextEditingController transactionNumber = TextEditingController();
+  TextEditingController beneficiary_id = TextEditingController();
 
   bool recive = false;
   int edit = 0;
   int id = 0;
   @override
   Widget build(BuildContext context) {
+    DateTime now = DateTime.now();
+    String time = DateFormat('hh:mm a').format(now);
+    String date = DateFormat('yyyy-MM-d').format(now);
+
     return Container(
         padding: const EdgeInsets.all(8),
         width: MediaQuery.of(context).size.width,
@@ -78,10 +86,13 @@ class _BeneficiaryScreenState extends State<BeneficiaryScreen> {
                                               color: reeed,
                                               ontap: () {
                                                 setState(() {
+                                                  recive = true;
                                                   name.text =
                                                       allBeneficiary[itemcount]
                                                           ["name"];
-                                                  recive = true;
+                                                  beneficiary_id.text =
+                                                      allBeneficiary[itemcount]
+                                                          ["name"];
                                                 });
                                               },
                                               chek: '  Pay  ',
@@ -134,6 +145,7 @@ class _BeneficiaryScreenState extends State<BeneficiaryScreen> {
                               ? Column(
                                   children: [
                                     Recive(
+                                      transactionNumber: transactionNumber,
                                       name: name,
                                       amount: amount,
                                       chek: '  pay  ',
@@ -141,16 +153,28 @@ class _BeneficiaryScreenState extends State<BeneficiaryScreen> {
                                       cancel: () {
                                         setState(() {
                                           recive = false;
+                                          amount.clear();
+                                          name.clear();
+                                          transactionNumber.clear();
                                         });
                                       },
                                       recive: () {
                                         setState(() {
                                           recive = false;
+                                          addExchang(
+                                            transactionNumber.text,
+                                            beneficiary_id.text,
+                                            date,
+                                            amount.text,
+                                          );
                                         });
+                                        amount.clear();
+                                        name.clear();
+                                        transactionNumber.clear();
                                       },
                                     ),
                                     SizedBox(
-                                      height: 16,
+                                      height: 14,
                                     ),
                                     Add_Donor(
                                       add: () {
@@ -219,7 +243,6 @@ class _BeneficiaryScreenState extends State<BeneficiaryScreen> {
                                       nationalId.clear();
                                       name.clear();
                                       phone.clear();
-
                                       location.clear();
                                     });
                                   },

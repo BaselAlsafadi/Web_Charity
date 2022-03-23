@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:web_charity/Constants/constants.dart';
+import 'package:web_charity/Services/Benefactor.dart';
 import 'package:web_charity/Services/Beneficiary.dart';
 import 'package:web_charity/Services/Users.dart';
 import 'package:web_charity/widget/forget_password.dart';
@@ -124,6 +125,7 @@ class _LogInScreenState extends State<LogInScreen> {
                         }
                         getAllUsers();
                         getAllbeneficiary();
+                        getAllBenefactor();
 
                         setState(() {
                           for (int i = 0; i < 10; i++) {

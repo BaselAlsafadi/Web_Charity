@@ -11,6 +11,7 @@ import 'package:web_charity/widget/RightSideBar/Right_SideBar.dart';
 import '../Constants/constants.dart';
 import 'Beneficiary.dart';
 import 'Donors.dart';
+import 'Exchange_Transaction.dart';
 import 'HomePage.dart';
 import 'MyTeam.dart';
 
@@ -79,7 +80,7 @@ class _MainScreenState extends State<MainScreen> {
                     title: 'Expenses',
                     press: () {
                       setState(() {
-                        tabIndex = 2;
+                        tabIndex = 1;
                         title = 'Expenses Page';
                       });
                     },
@@ -185,7 +186,7 @@ class _MainScreenState extends State<MainScreen> {
                       child: tabIndex == 0
                           ? HomePage()
                           : tabIndex == 1
-                              ? Scandpage()
+                              ? ExchangeTransaction()
                               : tabIndex == 4
                                   ? DonorsScreen()
                                   : tabIndex == 6
