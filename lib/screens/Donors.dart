@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:intl/intl.dart';
 import 'package:web_charity/Constants/constants.dart';
 import 'package:web_charity/Services/Benefactor.dart';
+import 'package:web_charity/Services/Revnue_TransAction.dart';
 import 'package:web_charity/widget/Card_User.dart';
 import 'package:web_charity/widget/Donors/Add_Donor.dart';
 import 'package:web_charity/widget/Donors/Recive.dart';
@@ -21,15 +23,19 @@ class _DonorsScreenState extends State<DonorsScreen> {
   TextEditingController name = TextEditingController();
   TextEditingController phone = TextEditingController();
   TextEditingController location = TextEditingController();
-  TextEditingController email = TextEditingController();
+  TextEditingController email = TextEditingController(text: 'ee');
   TextEditingController amount = TextEditingController();
   TextEditingController transActionNumber = TextEditingController();
+  TextEditingController benefactors_id = TextEditingController();
 
   bool recive = false;
   int edit = 0;
   int id = 0;
   @override
   Widget build(BuildContext context) {
+    DateTime now = DateTime.now();
+    String time = DateFormat('hh:mm a').format(now);
+    String date = DateFormat('yyyy-MM-d').format(now);
     return Container(
         padding: const EdgeInsets.all(8),
         width: MediaQuery.of(context).size.width,
@@ -45,7 +51,7 @@ class _DonorsScreenState extends State<DonorsScreen> {
                 children: [
                   Text('All Donors'),
                   Spacer(),
-                  Text("total"),
+                  Text("Total"),
                   SizedBox(
                     width: 5,
                   ),
@@ -81,6 +87,9 @@ class _DonorsScreenState extends State<DonorsScreen> {
                                             ontap: () {
                                               setState(() {
                                                 name.text =
+                                                    allBenefactor[itemcount]
+                                                        ["name"];
+                                                benefactors_id.text =
                                                     allBenefactor[itemcount]
                                                         ["name"];
                                                 recive = true;
@@ -152,6 +161,12 @@ class _DonorsScreenState extends State<DonorsScreen> {
                                       recive: () {
                                         setState(() {
                                           recive = false;
+                                          addRevnue(
+                                            transActionNumber.text,
+                                            benefactors_id.text,
+                                            date,
+                                            amount.text,
+                                          );
                                         });
                                       },
                                     ),
@@ -168,11 +183,28 @@ class _DonorsScreenState extends State<DonorsScreen> {
                                       canceledit: () {
                                         setState(() {
                                           edit = 0;
+                                          nationalId.clear();
+                                          name.clear();
+                                          phone.clear();
+
+                                          location.clear();
                                         });
                                       },
                                       editname: () {
                                         setState(() {
                                           edit = 0;
+                                          updateBenefactor(
+                                            id,
+                                            nationalId.text,
+                                            name.text,
+                                            email.text,
+                                            phone.text,
+                                            location.text,
+                                          );
+                                          nationalId.clear();
+                                          name.clear();
+                                          phone.clear();
+                                          location.clear();
                                         });
                                       },
                                       edit: edit,
@@ -180,7 +212,6 @@ class _DonorsScreenState extends State<DonorsScreen> {
                                   ],
                                 )
                               : Add_D(
-                                  email: email,
                                   add: () {
                                     setState(() {
                                       addBenefactor(
@@ -200,6 +231,7 @@ class _DonorsScreenState extends State<DonorsScreen> {
                                       location.clear();
                                     });
                                   },
+                                  email: email,
                                   name: name,
                                   nationalId: nationalId,
                                   phone: phone,

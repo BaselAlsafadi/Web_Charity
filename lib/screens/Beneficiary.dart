@@ -51,7 +51,7 @@ class _BeneficiaryScreenState extends State<BeneficiaryScreen> {
                 children: [
                   Text('All Beneficiary'),
                   Spacer(),
-                  Text("total"),
+                  Text("Total"),
                   SizedBox(
                     width: 5,
                   ),

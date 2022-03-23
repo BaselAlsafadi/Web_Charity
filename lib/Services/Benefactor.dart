@@ -44,3 +44,26 @@ Future<void> deleteBenefactor(int id) async {
         'https://badaelonline.com/charity/public/api/deleteBenefactor/${id}'),
   );
 }
+
+Future<void> updateBenefactor(int id, String nationalid, String name,
+    String email, String phone, String address) async {
+  try {
+    final response = await http.put(
+        Uri.parse(
+            'https://badaelonline.com/charity/public/api/updateBenefactor/${id}'),
+        headers: {
+          "Accept": "application/json",
+          "Access-Control_Allow_Origin": "*"
+        },
+        body: {
+          'nationalId': nationalid,
+          'name': name,
+          'email': email,
+          'phone': phone,
+          'address': address,
+        });
+    print(response.body);
+  } catch (err) {
+    print(err);
+  }
+}

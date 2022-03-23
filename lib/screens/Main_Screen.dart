@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:web_charity/Services/Users.dart';
 import 'package:web_charity/screens/analysis.dart';
 import 'package:web_charity/screens/log_in.dart';
-import 'package:web_charity/screens/secandpage.dart';
 import 'package:web_charity/widget/Drawer_ListTile.dart';
 import 'package:web_charity/widget/Header_Search.dart';
-import 'package:web_charity/widget/RightSideBar/Beneficiaries.dart';
 import 'package:web_charity/widget/RightSideBar/Right_SideBar.dart';
 import '../Constants/constants.dart';
 import 'Beneficiary.dart';
@@ -14,6 +12,7 @@ import 'Donors.dart';
 import 'Exchange_Transaction.dart';
 import 'HomePage.dart';
 import 'MyTeam.dart';
+import 'Revnue_Transaction.dart';
 
 class MainScreen extends StatefulWidget {
   final String name;
@@ -187,15 +186,17 @@ class _MainScreenState extends State<MainScreen> {
                           ? HomePage()
                           : tabIndex == 1
                               ? ExchangeTransaction()
-                              : tabIndex == 4
-                                  ? DonorsScreen()
-                                  : tabIndex == 6
-                                      ? MyTeam()
-                                      : tabIndex == 8
-                                          ? Analysis()
-                                          : tabIndex == 5
-                                              ? BeneficiaryScreen()
-                                              : HomePage(),
+                              : tabIndex == 3
+                                  ? RevnueTransaction()
+                                  : tabIndex == 4
+                                      ? DonorsScreen()
+                                      : tabIndex == 6
+                                          ? MyTeam()
+                                          : tabIndex == 8
+                                              ? Analysis()
+                                              : tabIndex == 5
+                                                  ? BeneficiaryScreen()
+                                                  : HomePage(),
                     ),
                   )
                 ],
