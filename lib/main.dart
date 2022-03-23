@@ -7,7 +7,6 @@ import 'screens/log_in.dart';
 
 void main() {
   runApp(const MyApp());
-  getAllExchang();
   getAllUsers();
   getAllExchang();
   getAllRevnues();

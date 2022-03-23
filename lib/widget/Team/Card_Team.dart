@@ -21,7 +21,7 @@ class CardTeam extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 8),
+      padding: const EdgeInsets.only(bottom: 8),
       child: Container(
         decoration: BoxDecoration(
             color: secondaryColor, borderRadius: BorderRadius.circular(10)),
@@ -38,12 +38,12 @@ class CardTeam extends StatelessWidget {
               Row(
                 children: [
                   Text(phone),
-                  SizedBox(
+                  const SizedBox(
                     width: 15,
                   ),
                   InkWell(
                     onTap: delete,
-                    child: Icon(
+                    child: const Icon(
                       Icons.delete,
                       size: 20,
                       color: Colors.white54,

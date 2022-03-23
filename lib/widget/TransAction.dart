@@ -47,7 +47,7 @@ class TransAction extends StatelessWidget {
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                       color: color,
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(5),
                       )),
                   child: Text(transactionNumber),
@@ -67,18 +67,18 @@ class TransAction extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: update,
-                          child: Icon(
+                          child: const Icon(
                             Icons.edit,
                             size: 20,
                             color: Colors.amber,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         InkWell(
                           onTap: delete,
-                          child: Icon(
+                          child: const Icon(
                             Icons.delete,
                             size: 20,
                             color: Colors.red,
@@ -108,21 +108,21 @@ class TransAction extends StatelessWidget {
                         children: [
                           Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.person,
                                 color: Colors.blue,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 5,
                               ),
                               Text(name)
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                           Row(
-                            children: [
+                            children: const [
                               Icon(
                                 Icons.phone,
                                 color: greeen,
@@ -133,11 +133,11 @@ class TransAction extends StatelessWidget {
                               Text('0930253884')
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                           Row(
-                            children: [
+                            children: const [
                               Icon(
                                 Icons.location_on,
                                 color: Colors.deepOrange,
@@ -161,17 +161,17 @@ class TransAction extends StatelessWidget {
                             height: 40,
                             child: Image.asset('assets/images/dollar.png'),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(amount.toString()),
-                              SizedBox(
+                              const SizedBox(
                                 width: 5,
                               ),
-                              Text('S.P')
+                              const Text('S.P')
                             ],
                           )
                         ],

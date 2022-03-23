@@ -34,40 +34,41 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             children: [
               Row(
                 children: [
-                  Spacer(),
-                  IconButton(onPressed: widget.Cancel, icon: Icon(Icons.cancel))
+                  const Spacer(),
+                  IconButton(
+                      onPressed: widget.Cancel, icon: const Icon(Icons.cancel))
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              Icon(
+              const Icon(
                 Icons.admin_panel_settings_rounded,
                 size: 60,
                 color: Colors.blue,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              Text(
+              const Text(
                 'Dear user , to get your password :',
                 style: TextStyle(fontSize: 16),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Text(
+              const Text(
                 '1 - please enter your national id.',
                 style: TextStyle(fontSize: 16),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Text(
+              const Text(
                 '2 - press buttom get password.',
                 style: TextStyle(fontSize: 16),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Padding(
@@ -78,7 +79,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                       const InputDecoration(labelText: 'Enter National Id'),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               InkWell(
@@ -101,20 +102,20 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                         color: Colors.amber[400],
                         borderRadius: BorderRadius.circular(5),
                       ),
-                      child: Text('get password'))),
-              SizedBox(
+                      child: const Text('get password'))),
+              const SizedBox(
                 height: 45,
               ),
               show == 1
                   ? Column(
                       children: [
-                        Text(
+                        const Text(
                           'Your Password is',
                           style: TextStyle(
                             fontSize: 16,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Container(
@@ -127,13 +128,13 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                           ),
                           child: Text(
                             password.toString(),
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.bold),
                           ),
                         )
                       ],
                     )
-                  : Text('')
+                  : const Text('')
             ],
           ),
         ),

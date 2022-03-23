@@ -29,7 +29,7 @@ class UserCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 8),
+      padding: const EdgeInsets.only(bottom: 8),
       child: Container(
         decoration: BoxDecoration(
             color: secondaryColor, borderRadius: BorderRadius.circular(10)),
@@ -48,13 +48,13 @@ class UserCard extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: edit,
-                    child: Icon(
+                    child: const Icon(
                       Icons.edit,
                       size: 20,
                       color: Colors.white54,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 8,
                   ),
                   InkWell(

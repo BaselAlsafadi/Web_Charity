@@ -7,7 +7,6 @@ import 'package:web_charity/Constants/constants.dart';
 import 'package:web_charity/Services/Benefactor.dart';
 import 'package:web_charity/Services/Revnue_TransAction.dart';
 import 'package:web_charity/widget/Card_User.dart';
-import 'package:web_charity/widget/Donors/Add_Donor.dart';
 import 'package:web_charity/widget/Donors/Recive.dart';
 import 'package:web_charity/widget/Donors/add.dart';
 
@@ -186,7 +185,6 @@ class _DonorsScreenState extends State<DonorsScreen> {
                                           nationalId.clear();
                                           name.clear();
                                           phone.clear();
-
                                           location.clear();
                                         });
                                       },
@@ -249,6 +247,15 @@ class _DonorsScreenState extends State<DonorsScreen> {
                                   },
                                   editname: () {
                                     setState(() {
+                                      updateBenefactor(
+                                        id,
+                                        nationalId.text,
+                                        name.text,
+                                        email.text,
+                                        phone.text,
+                                        location.text,
+                                      );
+                                      getAllBenefactor();
                                       edit = 0;
                                       nationalId.clear();
                                       name.clear();

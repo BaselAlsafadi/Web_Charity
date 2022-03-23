@@ -21,7 +21,8 @@ class DateTimeWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(defaultPadding),
             child: AnalogClock(
-              decoration: BoxDecoration(color: bgColor, shape: BoxShape.circle),
+              decoration:
+                  const BoxDecoration(color: bgColor, shape: BoxShape.circle),
               width: 150,
               height: 150,
               isLive: true,
