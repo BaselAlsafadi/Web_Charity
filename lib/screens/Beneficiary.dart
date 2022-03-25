@@ -132,6 +132,7 @@ class _BeneficiaryScreenState extends State<BeneficiaryScreen> {
                                                               ["address"]
                                                           .toString();
                                                 });
+                                                getExchang();
                                               },
                                             );
                                           },
@@ -168,9 +169,9 @@ class _BeneficiaryScreenState extends State<BeneficiaryScreen> {
                                             amount.text,
                                           );
                                         });
+                                        getExchang();
                                         amount.clear();
                                         name.clear();
-                                        transactionNumber.clear();
                                       },
                                     ),
                                     SizedBox(

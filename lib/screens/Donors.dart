@@ -48,13 +48,22 @@ class _DonorsScreenState extends State<DonorsScreen> {
             children: [
               Row(
                 children: [
-                  Text('All Donors'),
+                  Text(
+                    'All Donors',
+                    style: TextStyle(color: Colors.white54),
+                  ),
                   Spacer(),
-                  Text("Total"),
+                  Text(
+                    "Total",
+                    style: TextStyle(color: Colors.white54),
+                  ),
                   SizedBox(
                     width: 5,
                   ),
-                  Text(allBenefactor.length.toString())
+                  Text(
+                    allBenefactor.length.toString(),
+                    style: TextStyle(color: Colors.white54),
+                  )
                 ],
               ),
               const Padding(
@@ -166,6 +175,10 @@ class _DonorsScreenState extends State<DonorsScreen> {
                                             date,
                                             amount.text,
                                           );
+
+                                          benefactors_id.clear();
+                                          amount.clear();
+                                          name.clear();
                                         });
                                       },
                                     ),
@@ -176,7 +189,8 @@ class _DonorsScreenState extends State<DonorsScreen> {
                                       add: () {},
                                       name: name,
                                       nationalId: nationalId,
-                                      email: email,
+                                      email:
+                                          TextEditingController(text: 'eeeee'),
                                       phone: phone,
                                       location: location,
                                       canceledit: () {

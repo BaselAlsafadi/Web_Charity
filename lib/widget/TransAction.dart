@@ -50,13 +50,19 @@ class TransAction extends StatelessWidget {
                       borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(5),
                       )),
-                  child: Text(transactionNumber),
+                  child: Text(
+                    transactionNumber,
+                    style: TextStyle(color: Colors.white70),
+                  ),
                 ),
                 Container(
                   alignment: Alignment.center,
                   width: 150,
                   height: 25,
-                  child: Text(date),
+                  child: Text(
+                    date,
+                    style: TextStyle(color: Colors.white54),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 16.0),
@@ -115,7 +121,10 @@ class TransAction extends StatelessWidget {
                               const SizedBox(
                                 width: 5,
                               ),
-                              Text(name)
+                              Text(
+                                name,
+                                style: TextStyle(color: Colors.white54),
+                              )
                             ],
                           ),
                           const SizedBox(
@@ -130,7 +139,10 @@ class TransAction extends StatelessWidget {
                               SizedBox(
                                 width: 5,
                               ),
-                              Text('0930253884')
+                              Text(
+                                '0930253884',
+                                style: TextStyle(color: Colors.white54),
+                              )
                             ],
                           ),
                           const SizedBox(
@@ -145,7 +157,10 @@ class TransAction extends StatelessWidget {
                               SizedBox(
                                 width: 5,
                               ),
-                              Text('Syria-Swida-Alkafaer')
+                              Text(
+                                'Syria-Swida-Alkafaer',
+                                style: TextStyle(color: Colors.white54),
+                              )
                             ],
                           )
                         ],
@@ -167,11 +182,17 @@ class TransAction extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(amount.toString()),
+                              Text(
+                                amount.toString(),
+                                style: TextStyle(color: Colors.white54),
+                              ),
                               const SizedBox(
                                 width: 5,
                               ),
-                              const Text('S.P')
+                              const Text(
+                                'S.P',
+                                style: TextStyle(color: Colors.white54),
+                              )
                             ],
                           )
                         ],

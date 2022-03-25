@@ -45,8 +45,14 @@ class Recive extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(time),
-                  Text(date),
+                  Text(
+                    time,
+                    style: TextStyle(color: Colors.white54),
+                  ),
+                  Text(
+                    date,
+                    style: TextStyle(color: Colors.white54),
+                  ),
                 ],
               ),
               TextField(

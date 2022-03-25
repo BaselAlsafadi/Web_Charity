@@ -44,15 +44,24 @@ class _MyTeamState extends State<MyTeam> {
             children: [
               Row(
                 children: [
-                  Text('All Team'),
+                  Text(
+                    'All Team',
+                    style: TextStyle(color: Colors.white54),
+                  ),
                   Spacer(),
                   Row(
                     children: [
-                      Text('Total'),
+                      Text(
+                        'Total',
+                        style: TextStyle(color: Colors.white54),
+                      ),
                       SizedBox(
                         width: 5,
                       ),
-                      Text(allUsers.length.toString()),
+                      Text(
+                        allUsers.length.toString(),
+                        style: TextStyle(color: Colors.white54),
+                      ),
                     ],
                   )
                 ],

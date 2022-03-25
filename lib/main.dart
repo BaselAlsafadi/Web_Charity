@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'Constants/constants.dart';
+import 'Services/Benefactor.dart';
+import 'Services/Beneficiary.dart';
 import 'Services/Exchang_TransAction.dart';
 import 'Services/Revnue_TransAction.dart';
 import 'Services/Users.dart';
@@ -10,6 +12,9 @@ void main() {
   getAllUsers();
   getAllExchang();
   getAllRevnues();
+  getAllBenefactor();
+  getAllbeneficiary();
+  getExchang();
 }
 
 class MyApp extends StatelessWidget {

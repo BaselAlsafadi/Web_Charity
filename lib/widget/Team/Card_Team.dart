@@ -34,10 +34,16 @@ class CardTeam extends StatelessWidget {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(name),
+              Text(
+                name,
+                style: TextStyle(color: Colors.white54),
+              ),
               Row(
                 children: [
-                  Text(phone),
+                  Text(
+                    phone,
+                    style: TextStyle(color: Colors.white54),
+                  ),
                   const SizedBox(
                     width: 15,
                   ),

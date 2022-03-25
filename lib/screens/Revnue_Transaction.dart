@@ -44,13 +44,22 @@ class _RevnueTransactionState extends State<RevnueTransaction> {
             children: [
               Row(
                 children: [
-                  Text('All Revnues'),
+                  Text(
+                    'All Revnues',
+                    style: TextStyle(color: Colors.white54),
+                  ),
                   Spacer(),
-                  Text("Total"),
+                  Text(
+                    "Total",
+                    style: TextStyle(color: Colors.white54),
+                  ),
                   SizedBox(
                     width: 5,
                   ),
-                  Text(allRevnues.length.toString())
+                  Text(
+                    allRevnues.length.toString(),
+                    style: TextStyle(color: Colors.white54),
+                  )
                 ],
               ),
               const Padding(

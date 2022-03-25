@@ -42,8 +42,14 @@ class UserCard extends StatelessWidget {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(name),
-              Text(number),
+              Text(
+                name,
+                style: TextStyle(color: Colors.white54),
+              ),
+              Text(
+                number,
+                style: TextStyle(color: Colors.white54),
+              ),
               Row(
                 children: [
                   InkWell(
@@ -69,7 +75,10 @@ class UserCard extends StatelessWidget {
               )
             ],
           ),
-          subtitle: Text(addres),
+          subtitle: Text(
+            addres,
+            style: TextStyle(color: Colors.white54),
+          ),
           trailing: InkWell(
             onTap: ontap,
             child: Container(

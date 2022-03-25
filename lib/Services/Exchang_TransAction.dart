@@ -4,6 +4,18 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 List allExchanges = [];
+int totalExchang = 0;
+
+Future<void> getExchang() async {
+  const API_URL = 'https://badaelonline.com/charity/public/api/exchange';
+
+  final response = await http.get(
+    Uri.parse(API_URL),
+  );
+  final data = json.decode(response.body);
+
+  return totalExchang = data;
+}
 
 Future<void> getAllExchang() async {
   const API_URL =

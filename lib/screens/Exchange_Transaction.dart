@@ -43,13 +43,22 @@ class _ExchangeTransactionState extends State<ExchangeTransaction> {
             children: [
               Row(
                 children: [
-                  Text('All Exchanges'),
+                  Text(
+                    'All Exchanges',
+                    style: TextStyle(color: Colors.white54),
+                  ),
                   Spacer(),
-                  Text("Total"),
+                  Text(
+                    "Total",
+                    style: TextStyle(color: Colors.white54),
+                  ),
                   SizedBox(
                     width: 5,
                   ),
-                  Text(allExchanges.length.toString())
+                  Text(
+                    allExchanges.length.toString(),
+                    style: TextStyle(color: Colors.white54),
+                  )
                 ],
               ),
               const Padding(
