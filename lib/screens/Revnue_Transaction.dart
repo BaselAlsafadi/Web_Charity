@@ -69,99 +69,94 @@ class _RevnueTransactionState extends State<RevnueTransaction> {
                 ),
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
-                    flex: 2,
-                    child: Container(
-                        height: 575,
-                        decoration: BoxDecoration(
-                            color: bgColor,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Flexible(
-                            child: Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: FutureBuilder(
-                                    future: getAllRevnues(),
-                                    builder: (context, snapshot) {
-                                      return ListView.builder(
-                                        itemCount: allRevnues.length,
-                                        itemBuilder: (context, itemcount) {
-                                          return TransAction(
-                                            color: greeen,
-                                            delete: () {
-                                              setState(() {
-                                                deleteRevnue(
-                                                  allRevnues[itemcount]["id"],
-                                                );
-                                                getAllExchang();
-                                              });
-                                            },
-                                            update: () {
-                                              setState(() {
-                                                id =
-                                                    allRevnues[itemcount]["id"];
-                                                name.text =
-                                                    allRevnues[itemcount]
-                                                        ["benefactors_id"];
-                                                amount.text =
-                                                    allRevnues[itemcount]
-                                                            ["value"]
-                                                        .toString();
-                                                transactionNumber.text =
-                                                    allRevnues[itemcount][
-                                                            "transactionNumber"]
-                                                        .toString();
-                                              });
-                                            },
-                                            name: allRevnues[itemcount]
-                                                ["benefactors_id"],
-                                            amount: allRevnues[itemcount]
-                                                ["value"],
-                                            address:
-                                                "Syria - Alswaida - Alkafer",
-                                            date: allRevnues[itemcount]["date"]
-                                                .toString(),
-                                            transactionNumber:
-                                                allRevnues[itemcount]
-                                                    ["transactionNumber"],
-                                            number: '0930253884',
-                                          );
-                                        },
-                                      );
-                                    })))),
-                  ),
-                  Expanded(
-                      flex: 1,
-                      child: Column(children: [
-                        Recive(
-                          transactionNumber: transactionNumber,
-                          name: name,
-                          amount: amount,
-                          chek: 'update',
-                          color: greeen,
-                          cancel: () {
-                            setState(() {});
-                            amount.clear();
-                            name.clear();
-                            transactionNumber.clear();
-                          },
-                          recive: () {
-                            setState(() {
-                              updateTransActionrevnue(
-                                id,
-                                transactionNumber.text,
-                                name.text,
-                                date,
-                                amount.text,
+                  Container(
+                      decoration: BoxDecoration(
+                          color: bgColor,
+                          borderRadius: BorderRadius.circular(10)),
+                      padding: EdgeInsets.all(8),
+                      child: Container(
+                        width: 700,
+                        height: 550,
+                        child: FutureBuilder(
+                            future: getAllRevnues(),
+                            builder: (context, snapshot) {
+                              return ListView.builder(
+                                itemCount: allRevnues.length,
+                                itemBuilder: (context, itemcount) {
+                                  return TransAction(
+                                    color: greeen,
+                                    delete: () {
+                                      setState(() {
+                                        deleteRevnue(
+                                          allRevnues[itemcount]["id"],
+                                        );
+                                        getAllRevnues();
+                                        getRevenue();
+                                      });
+                                    },
+                                    update: () {
+                                      setState(() {
+                                        id = allRevnues[itemcount]["id"];
+                                        name.text = allRevnues[itemcount]
+                                            ["benefactors_id"];
+                                        amount.text = allRevnues[itemcount]
+                                                ["value"]
+                                            .toString();
+                                        transactionNumber.text =
+                                            allRevnues[itemcount]
+                                                    ["transactionNumber"]
+                                                .toString();
+                                      });
+                                      getRevenue();
+                                    },
+                                    name: allRevnues[itemcount]
+                                        ["benefactors_id"],
+                                    amount: allRevnues[itemcount]["value"],
+                                    address: "Syria - Alswaida - Alkafer",
+                                    date: allRevnues[itemcount]["date"]
+                                        .toString(),
+                                    transactionNumber: allRevnues[itemcount]
+                                        ["transactionNumber"],
+                                    number: '0930253884',
+                                  );
+                                },
                               );
-                              getAllRevnues();
-                            });
-                            amount.clear();
-                            name.clear();
-                            transactionNumber.clear();
-                          },
-                        )
-                      ]))
+                            }),
+                      )),
+                  Container(
+                    width: 348,
+                    height: 265,
+                    child: Recive(
+                      transactionNumber: transactionNumber,
+                      name: name,
+                      amount: amount,
+                      chek: 'update',
+                      color: greeen,
+                      cancel: () {
+                        setState(() {});
+                        amount.clear();
+                        name.clear();
+                        transactionNumber.clear();
+                      },
+                      recive: () {
+                        setState(() {
+                          updateTransActionrevnue(
+                            id,
+                            transactionNumber.text,
+                            name.text,
+                            date,
+                            amount.text,
+                          );
+                          getAllRevnues();
+                        });
+                        amount.clear();
+                        name.clear();
+                        transactionNumber.clear();
+                      },
+                    ),
+                  )
                 ],
               )
             ],

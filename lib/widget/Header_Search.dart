@@ -22,7 +22,7 @@ class _HeaderSearchState extends State<HeaderSearch> {
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Container(
             alignment: Alignment.center,
-            width: 250,
+            width: MediaQuery.of(context).size.width / 6,
             height: 50,
             decoration: BoxDecoration(
                 color: secondaryColor,
@@ -36,7 +36,7 @@ class _HeaderSearchState extends State<HeaderSearch> {
           decoration: BoxDecoration(
               color: secondaryColor,
               borderRadius: BorderRadius.all(Radius.circular(10))),
-          width: 500,
+          width: MediaQuery.of(context).size.width / 2.8,
           height: 50,
           child: Row(
             children: [
@@ -63,7 +63,7 @@ class _HeaderSearchState extends State<HeaderSearch> {
         ),
         Container(
             alignment: Alignment.center,
-            width: 250,
+            width: MediaQuery.of(context).size.width / 6,
             height: 50,
             decoration: BoxDecoration(
                 color: secondaryColor,

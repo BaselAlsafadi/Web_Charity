@@ -73,141 +73,133 @@ class _MyTeamState extends State<MyTeam> {
                 ),
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(
-                      flex: 2,
-                      child: Container(
-                        height: 575,
-                        decoration: BoxDecoration(
-                            color: bgColor,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Flexible(
-                          child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: FutureBuilder(
-                                  future: getAllUsers(),
-                                  builder: (context, snapshot) {
-                                    return ListView.builder(
-                                      itemCount: allUsers.length,
-                                      itemBuilder: (context, itemcount) {
-                                        return CardTeam(
-                                          idlist: '${itemcount + 1}',
-                                          name: allUsers[itemcount]["name"],
-                                          phone: allUsers[itemcount]["phone"],
-                                          delete: () {
-                                            setState(() {
-                                              deleteUser(
-                                                  allUsers[itemcount]["id"]);
-                                            });
-                                            getAllUsers();
-                                          },
-                                          edit: () {
-                                            setState(() {
-                                              edit = 1;
-                                              id = allUsers[itemcount]["id"];
-                                              nationalId.text =
-                                                  allUsers[itemcount]
-                                                      ["nationalId"];
-                                              name.text =
-                                                  allUsers[itemcount]["name"];
-                                              phone.text =
-                                                  allUsers[itemcount]["phone"];
-                                              isadmin.text = allUsers[itemcount]
-                                                      ["isAdmin"]
-                                                  .toString();
+                  Container(
+                    decoration: BoxDecoration(
+                        color: bgColor,
+                        borderRadius: BorderRadius.circular(10)),
+                    padding: EdgeInsets.all(8),
+                    child: Container(
+                      width: 700,
+                      height: 550,
+                      child: FutureBuilder(
+                          future: getAllUsers(),
+                          builder: (context, snapshot) {
+                            return ListView.builder(
+                              itemCount: allUsers.length,
+                              itemBuilder: (context, itemcount) {
+                                return CardTeam(
+                                  idlist: '${itemcount + 1}',
+                                  name: allUsers[itemcount]["name"],
+                                  phone: allUsers[itemcount]["phone"],
+                                  delete: () {
+                                    setState(() {
+                                      deleteUser(allUsers[itemcount]["id"]);
+                                    });
+                                    getAllUsers();
+                                  },
+                                  edit: () {
+                                    setState(() {
+                                      edit = 1;
+                                      id = allUsers[itemcount]["id"];
+                                      nationalId.text =
+                                          allUsers[itemcount]["nationalId"];
+                                      name.text = allUsers[itemcount]["name"];
+                                      phone.text = allUsers[itemcount]["phone"];
+                                      isadmin.text = allUsers[itemcount]
+                                              ["isAdmin"]
+                                          .toString();
 
-                                              email.text = allUsers[itemcount]
-                                                      ["email"]
-                                                  .toString();
-                                              password.text =
-                                                  allUsers[itemcount]["photo"]
-                                                      .toString();
+                                      email.text = allUsers[itemcount]["email"]
+                                          .toString();
+                                      password.text = allUsers[itemcount]
+                                              ["photo"]
+                                          .toString();
 
-                                              location.text =
-                                                  allUsers[itemcount]["address"]
-                                                      .toString();
-                                            });
-                                          },
-                                        );
-                                      },
-                                    );
-                                  })),
-                        ),
-                      )),
-                  Expanded(
-                      flex: 1,
-                      child: Column(
-                        children: [
-                          Add_Team(
-                            nationalId: nationalId,
-                            name: name,
-                            phone: phone,
-                            isadmin: isadmin,
-                            email: email,
-                            password: password,
-                            location: location,
-                            add: () {
-                              setState(() {
-                                addUser(
-                                    name.text,
-                                    phone.text,
-                                    email.text,
-                                    password.text,
-                                    nationalId.text,
-                                    location.text,
-                                    isadmin.text);
-                                AuthUsers.add(email.text.toString());
-                                AuthPassword.add(password.text.toString());
-                                print(AuthPassword);
-                                print(AuthUsers);
-                                getAllUsers();
-                                nationalId.clear();
-                                name.clear();
-                                phone.clear();
-                                password.clear();
-                                location.clear();
-                                isadmin.clear();
-                                email.clear();
-                              });
-                            },
-                            canceledit: () {
-                              setState(() {
-                                edit = 0;
-                                nationalId.clear();
-                                name.clear();
-                                phone.clear();
-                                password.clear();
-                                location.clear();
-                                isadmin.clear();
-                                email.clear();
-                              });
-                            },
-                            editname: () {
-                              setState(() {
-                                edit = 0;
-                                updateUser(
-                                    id,
-                                    name.text,
-                                    phone.text,
-                                    email.text,
-                                    password.text,
-                                    nationalId.text,
-                                    location.text,
-                                    isadmin.text);
-                              });
-                              getAllUsers();
-                              nationalId.clear();
-                              name.clear();
-                              phone.clear();
-                              password.clear();
-                              location.clear();
-                              isadmin.clear();
-                              email.clear();
-                            },
-                            edit: edit,
-                          ),
-                        ],
-                      ))
+                                      location.text = allUsers[itemcount]
+                                              ["address"]
+                                          .toString();
+                                    });
+                                  },
+                                );
+                              },
+                            );
+                          }),
+                    ),
+                  ),
+                  Container(
+                    width: 348,
+                    height: 500,
+                    child: Add_Team(
+                      nationalId: nationalId,
+                      name: name,
+                      phone: phone,
+                      isadmin: isadmin,
+                      email: email,
+                      password: password,
+                      location: location,
+                      add: () {
+                        setState(() {
+                          addUser(
+                              name.text,
+                              phone.text,
+                              email.text,
+                              password.text,
+                              nationalId.text,
+                              location.text,
+                              isadmin.text);
+                          AuthUsers.add(email.text.toString());
+                          AuthPassword.add(password.text.toString());
+                          print(AuthPassword);
+                          print(AuthUsers);
+                          getAllUsers();
+                          nationalId.clear();
+                          name.clear();
+                          phone.clear();
+                          password.clear();
+                          location.clear();
+                          isadmin.clear();
+                          email.clear();
+                        });
+                      },
+                      canceledit: () {
+                        setState(() {
+                          edit = 0;
+                          nationalId.clear();
+                          name.clear();
+                          phone.clear();
+                          password.clear();
+                          location.clear();
+                          isadmin.clear();
+                          email.clear();
+                        });
+                      },
+                      editname: () {
+                        setState(() {
+                          edit = 0;
+                          updateUser(
+                              id,
+                              name.text,
+                              phone.text,
+                              email.text,
+                              password.text,
+                              nationalId.text,
+                              location.text,
+                              isadmin.text);
+                        });
+                        getAllUsers();
+                        nationalId.clear();
+                        name.clear();
+                        phone.clear();
+                        password.clear();
+                        location.clear();
+                        isadmin.clear();
+                        email.clear();
+                      },
+                      edit: edit,
+                    ),
+                  )
                 ],
               )
             ],

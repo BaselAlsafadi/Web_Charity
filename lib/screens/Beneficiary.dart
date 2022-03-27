@@ -49,9 +49,15 @@ class _BeneficiaryScreenState extends State<BeneficiaryScreen> {
             children: [
               Row(
                 children: [
-                  Text('All Beneficiary'),
+                  Text(
+                    'All Beneficiary',
+                    style: TextStyle(color: Colors.white54),
+                  ),
                   Spacer(),
-                  Text("Total"),
+                  Text(
+                    "Total",
+                    style: TextStyle(color: Colors.white54),
+                  ),
                   SizedBox(
                     width: 5,
                   ),
@@ -65,192 +71,187 @@ class _BeneficiaryScreenState extends State<BeneficiaryScreen> {
                 ),
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
-                      flex: 2,
+                  Container(
+                      decoration: BoxDecoration(
+                          color: bgColor,
+                          borderRadius: BorderRadius.circular(10)),
+                      padding: EdgeInsets.all(8),
                       child: Container(
-                          height: 575,
-                          decoration: BoxDecoration(
-                              color: bgColor,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Flexible(
-                              child: Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: FutureBuilder(
-                                      future: getAllbeneficiary(),
-                                      builder: (context, snapshot) {
-                                        return ListView.builder(
-                                          itemCount: allBeneficiary.length,
-                                          itemBuilder: (context, itemcount) {
-                                            return UserCard(
-                                              color: reeed,
-                                              ontap: () {
-                                                setState(() {
-                                                  recive = true;
-                                                  name.text =
-                                                      allBeneficiary[itemcount]
-                                                          ["name"];
-                                                  beneficiary_id.text =
-                                                      allBeneficiary[itemcount]
-                                                          ["name"];
-                                                });
-                                              },
-                                              chek: '  Pay  ',
-                                              addres: allBeneficiary[itemcount]
-                                                  ["address"],
-                                              id: itemcount + 1,
-                                              name: allBeneficiary[itemcount]
-                                                  ["name"],
-                                              number: allBeneficiary[itemcount]
-                                                  ["phone"],
-                                              delete: () {
-                                                setState(() {
-                                                  deleteBeneficiary(
-                                                      allBeneficiary[itemcount]
-                                                          ["id"]);
-                                                  getAllbeneficiary();
-                                                });
-                                              },
-                                              edit: () {
-                                                setState(() {
-                                                  edit = 1;
+                        width: 700,
+                        height: 550,
+                        child: FutureBuilder(
+                            future: getAllbeneficiary(),
+                            builder: (context, snapshot) {
+                              return ListView.builder(
+                                itemCount: allBeneficiary.length,
+                                itemBuilder: (context, itemcount) {
+                                  return UserCard(
+                                    color: reeed,
+                                    ontap: () {
+                                      setState(() {
+                                        recive = true;
+                                        name.text =
+                                            allBeneficiary[itemcount]["name"];
+                                        beneficiary_id.text =
+                                            allBeneficiary[itemcount]["name"];
+                                      });
+                                    },
+                                    chek: '  Pay  ',
+                                    addres: allBeneficiary[itemcount]
+                                        ["address"],
+                                    id: itemcount + 1,
+                                    name: allBeneficiary[itemcount]["name"],
+                                    number: allBeneficiary[itemcount]["phone"],
+                                    delete: () {
+                                      setState(() {
+                                        deleteBeneficiary(
+                                            allBeneficiary[itemcount]["id"]);
+                                        getAllbeneficiary();
+                                      });
+                                    },
+                                    edit: () {
+                                      setState(() {
+                                        edit = 1;
 
-                                                  id = allBeneficiary[itemcount]
-                                                      ["id"];
-                                                  nationalId.text =
-                                                      allBeneficiary[itemcount]
-                                                          ["nationalId"];
-                                                  name.text =
-                                                      allBeneficiary[itemcount]
-                                                          ["name"];
-                                                  phone.text =
-                                                      allBeneficiary[itemcount]
-                                                          ["phone"];
+                                        id = allBeneficiary[itemcount]["id"];
+                                        nationalId.text =
+                                            allBeneficiary[itemcount]
+                                                ["nationalId"];
+                                        name.text =
+                                            allBeneficiary[itemcount]["name"];
+                                        phone.text =
+                                            allBeneficiary[itemcount]["phone"];
 
-                                                  location.text =
-                                                      allBeneficiary[itemcount]
-                                                              ["address"]
-                                                          .toString();
-                                                });
-                                                getExchang();
-                                              },
-                                            );
-                                          },
-                                        );
-                                      }))))),
-                  Expanded(
-                      flex: 1,
-                      child: Column(
-                        children: [
-                          recive == true
-                              ? Column(
-                                  children: [
-                                    Recive(
-                                      transactionNumber: transactionNumber,
-                                      name: name,
-                                      amount: amount,
-                                      chek: '  pay  ',
-                                      color: reeed,
-                                      cancel: () {
-                                        setState(() {
-                                          recive = false;
-                                          amount.clear();
-                                          name.clear();
-                                          transactionNumber.clear();
-                                        });
-                                      },
-                                      recive: () {
-                                        setState(() {
-                                          recive = false;
-                                          addExchang(
-                                            transactionNumber.text,
-                                            beneficiary_id.text,
-                                            date,
-                                            amount.text,
-                                          );
-                                        });
-                                        getExchang();
+                                        location.text =
+                                            allBeneficiary[itemcount]["address"]
+                                                .toString();
+                                      });
+                                      getExchang();
+                                    },
+                                  );
+                                },
+                              );
+                            }),
+                      )),
+                  Container(
+                    alignment: Alignment.center,
+                    width: 348,
+                    height: 550,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        recive == true
+                            ? Column(
+                                children: [
+                                  Recive(
+                                    transactionNumber: transactionNumber,
+                                    name: name,
+                                    amount: amount,
+                                    chek: '  pay  ',
+                                    color: reeed,
+                                    cancel: () {
+                                      setState(() {
+                                        recive = false;
                                         amount.clear();
                                         name.clear();
-                                      },
-                                    ),
-                                    SizedBox(
-                                      height: 14,
-                                    ),
-                                    Add_Donor(
-                                      add: () {
-                                        setState(() {});
-                                      },
-                                      name: name,
-                                      nationalId: nationalId,
-                                      phone: phone,
-                                      location: location,
-                                      canceledit: () {
-                                        setState(() {
-                                          edit = 0;
-                                        });
-                                      },
-                                      editname: () {
-                                        setState(() {
-                                          edit = 0;
-                                        });
-                                      },
-                                      edit: edit,
-                                    ),
-                                  ],
-                                )
-                              : Add_Donor(
-                                  add: () {
-                                    setState(() {
-                                      addBeneficiary(
-                                        nationalId.text,
-                                        name.text,
-                                        phone.text,
-                                        location.text,
-                                      );
+                                        transactionNumber.clear();
+                                      });
+                                    },
+                                    recive: () {
+                                      setState(() {
+                                        recive = false;
+                                        addExchang(
+                                          transactionNumber.text,
+                                          beneficiary_id.text,
+                                          date,
+                                          amount.text,
+                                        );
+                                      });
+                                      getExchang();
+                                      amount.clear();
+                                      name.clear();
+                                    },
+                                  ),
+                                  SizedBox(
+                                    height: 16,
+                                  ),
+                                  Add_Donor(
+                                    add: () {
+                                      setState(() {});
+                                    },
+                                    name: name,
+                                    nationalId: nationalId,
+                                    phone: phone,
+                                    location: location,
+                                    canceledit: () {
+                                      setState(() {
+                                        edit = 0;
+                                      });
+                                    },
+                                    editname: () {
+                                      setState(() {
+                                        edit = 0;
+                                      });
+                                    },
+                                    edit: edit,
+                                  ),
+                                ],
+                              )
+                            : Add_Donor(
+                                add: () {
+                                  setState(() {
+                                    addBeneficiary(
+                                      nationalId.text,
+                                      name.text,
+                                      phone.text,
+                                      location.text,
+                                    );
 
-                                      getAllbeneficiary();
-                                      nationalId.clear();
-                                      name.clear();
-                                      phone.clear();
-                                      location.clear();
-                                    });
-                                  },
-                                  name: name,
-                                  nationalId: nationalId,
-                                  phone: phone,
-                                  location: location,
-                                  canceledit: () {
-                                    setState(() {
-                                      edit = 0;
-                                      nationalId.clear();
-                                      name.clear();
-                                      phone.clear();
+                                    getAllbeneficiary();
+                                    nationalId.clear();
+                                    name.clear();
+                                    phone.clear();
+                                    location.clear();
+                                  });
+                                },
+                                name: name,
+                                nationalId: nationalId,
+                                phone: phone,
+                                location: location,
+                                canceledit: () {
+                                  setState(() {
+                                    edit = 0;
+                                    nationalId.clear();
+                                    name.clear();
+                                    phone.clear();
 
-                                      location.clear();
-                                    });
-                                  },
-                                  editname: () {
-                                    setState(() {
-                                      edit = 0;
-                                      updateBeneficiary(
-                                        id,
-                                        nationalId.text,
-                                        name.text,
-                                        phone.text,
-                                        location.text,
-                                      );
-                                      getAllbeneficiary();
-                                      nationalId.clear();
-                                      name.clear();
-                                      phone.clear();
-                                      location.clear();
-                                    });
-                                  },
-                                  edit: edit,
-                                ),
-                        ],
-                      ))
+                                    location.clear();
+                                  });
+                                },
+                                editname: () {
+                                  setState(() {
+                                    edit = 0;
+                                    updateBeneficiary(
+                                      id,
+                                      nationalId.text,
+                                      name.text,
+                                      phone.text,
+                                      location.text,
+                                    );
+                                    getAllbeneficiary();
+                                    nationalId.clear();
+                                    name.clear();
+                                    phone.clear();
+                                    location.clear();
+                                  });
+                                },
+                                edit: edit,
+                              ),
+                      ],
+                    ),
+                  )
                 ],
               )
             ],
