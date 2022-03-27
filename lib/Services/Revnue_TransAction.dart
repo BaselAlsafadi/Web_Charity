@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 List allRevnues = [];
+int totalRevenue = 0;
 
 Future<void> getAllRevnues() async {
   const API_URL =
@@ -15,6 +16,17 @@ Future<void> getAllRevnues() async {
   final data = json.decode(response.body);
 
   return allRevnues = data;
+}
+
+Future<void> getRevenue() async {
+  const API_URL = 'https://badaelonline.com/charity/public/api/revenue';
+
+  final response = await http.get(
+    Uri.parse(API_URL),
+  );
+  final data = json.decode(response.body);
+
+  return totalRevenue = data;
 }
 
 Future<void> addRevnue(

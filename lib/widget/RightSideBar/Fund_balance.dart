@@ -1,5 +1,7 @@
 // ignore_for_file: file_names, camel_case_types, prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:web_charity/Services/Exchang_TransAction.dart';
+import 'package:web_charity/Services/Revnue_TransAction.dart';
 import '../../Constants/constants.dart';
 
 class Fund_Balance extends StatelessWidget {
@@ -26,7 +28,7 @@ class Fund_Balance extends StatelessWidget {
               height: 44,
               decoration: BoxDecoration(
                   color: bgColor, borderRadius: BorderRadius.circular(10)),
-              child: Text('100.000.000  S.P',
+              child: Text((totalRevenue - totalExchang).toString() + '    S.P',
                   style: TextStyle(color: Colors.blue)),
             ),
           ],

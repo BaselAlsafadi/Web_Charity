@@ -17,6 +17,8 @@ dependencies:
   syncfusion_flutter_datepicker: ^19.4.53
   syncfusion_flutter_charts : ^19.4.53
   http: ^0.13.1
+  carousel_slider: ^4.0.0
+ 
 
 dev_dependencies:
   flutter_test:

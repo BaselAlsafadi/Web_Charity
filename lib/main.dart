@@ -15,6 +15,7 @@ void main() {
   getAllBenefactor();
   getAllbeneficiary();
   getExchang();
+  getRevenue();
 }
 
 class MyApp extends StatelessWidget {
