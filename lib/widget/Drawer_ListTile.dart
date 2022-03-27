@@ -15,6 +15,7 @@ class DrawerListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      hoverColor: Colors.white,
       onTap: press,
       horizontalTitleGap: 0.0,
       leading: Image.asset(

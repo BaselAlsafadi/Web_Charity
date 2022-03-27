@@ -137,16 +137,6 @@ class _MainScreenState extends State<MainScreen> {
                     image: 'assets/images/team.png',
                   ),
                   DrawerListTile(
-                    title: 'Settings',
-                    press: () {
-                      setState(() {
-                        tabIndex = 7;
-                        title = 'Settings Page';
-                      });
-                    },
-                    image: 'assets/images/settings.png',
-                  ),
-                  DrawerListTile(
                     title: 'Log Out',
                     press: () {
                       setState(() {

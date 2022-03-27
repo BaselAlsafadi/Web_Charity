@@ -1,5 +1,6 @@
 // ignore_for_file: file_names, camel_case_types, prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:web_charity/Services/Beneficiary.dart';
 import '../../Constants/constants.dart';
 
 class Beneficiaries extends StatelessWidget {
@@ -27,7 +28,8 @@ class Beneficiaries extends StatelessWidget {
               height: 44,
               decoration: BoxDecoration(
                   color: bgColor, borderRadius: BorderRadius.circular(10)),
-              child: Text('1350 Person', style: TextStyle(color: Colors.blue)),
+              child: Text(allBeneficiary.length.toString(),
+                  style: TextStyle(color: Colors.blue)),
             ),
           ],
         ),
